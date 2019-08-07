@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" >
+
+    <title>Hello, world!</title>
+  </head>
+  
+  <body>
+     <div class="container">
+        <h1>Hello, world!</h1>
+
+        <div class="alert " role="alert" id="my-box">
+          
+        </div>
+
+      
+        <button type="button" class="btn btn-success" id="btn-green">Verde</button>
+        <button type="button" class="btn btn-danger" id="btn-red">Vermelho</button>
+
+     </div> 
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="bootstrap/js/jquery-3.3.1.slim.min.js" ></script>
+    <script src="bootstrap/js/popper.min.js" ></script>
+    <script src="bootstrap/js/bootstrap.min.js" ></script>
+
+    <script>
+
+    
+        const myBox=document.getElementById('my-box');
+        const btnGreen=document.getElementById('btn-green');
+        const btnRed=document.getElementById('btn-red');
+
+        const textConfig=(text,classes)=>{//(text,oldClass,newClass)  se fosse trabalhar com ClassList
+          myBox.innerHTML=text;//Aqui ele substitui o texto do my-box
+          //myBox.classList.remove(oldClass);// remove uma classe especifica
+          //myBox.classList.add(newClass); //Add uma class no my-box
+          myBox.setAttribute('class',' ');
+          myBox.classList.add('alert',classes);
+        }
+       
+        textConfig('Clique em um dos botões','alert-primary');
+      
+      
+     
+        
+
+        btnRed.addEventListener('click', ()=>{
+          textConfig('Esse é o vermelho','alert-danger');
+        })
+
+
+        btnGreen.addEventListener('click', ()=>{
+          textConfig('Esse é o verde','alert-success');
+        })
+
+     
+        //myBox.innerHTML= text; 
+       
+     
+       
+    
+    </script>
+  </body>
+</html>
