@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sprite </title>
+	<meta charset="utf-8">
+
+</head>
+<body>
+	<canvas id="canvas" width="1024" height="768"></canvas>
+
+</body>
+</html>
+<script type="text/javascript">
+	window.onload=()=>{
+		let vx =20;
+		let vy =20;
+		let x  =30;
+		let y  =200;	
+		let w  =1024;
+		let h  =768;
+		let img=new Image();
+		let position=1;
+		let numPosition = 5;
+		let canvas;
+		let ctx;
+		const keyDown=(event)=>{
+			//console.log(event.keyCode);
+			switch(event.keyCode){
+				case 39: 
+					//console.log('direita');
+					if(x+vx < w){
+						x+=vx;
+						position ++;
+						if (position == numPosition) position=1;
+					}
+				break;
+				case 37:
+					if(x-vx > 0){
+						x -= vx;
+						position ++;
+						if(position == numPosition) position=1; 
+					}
+					//console.log('esquerda');
+
+				break;
+				case 38:
+					console.log('top');
+				break;
+				case 40:
+					if(y+vy < h){
+						y+=vy;
+						position ++;
+						if (position == numPosition) position=1;
+					}
+					
+				break;
+
+			}
+		}
+		
+
+
+		const draw=()=>{
+			img.src='png/0'+position+'.png';
+			ctx.drawImage(img,x,y,'300','80');
+		}
+
+		const clearScreen=()=>{
+			ctx.fillStyle = 'rgb(233,233,233)';
+			ctx.beginPath();
+			ctx.rect(0,0,w,h);
+			ctx.closePath();
+			ctx.fill();
+		}
+		const update=()=>{
+			clearScreen();
+			draw();
+		}
+		const init=()=>{
+			canvas = document.getElementById('canvas');
+			ctx=canvas.getContext('2d');
+			return setInterval(update,100);
+		}
+	window.addEventListener('keydown',keyDown);
+	init();
+	}
+</script>
